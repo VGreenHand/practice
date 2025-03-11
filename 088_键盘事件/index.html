@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="text" id="password">
+    <button id="btn">按钮</button>
+
+    <script>
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+        var btn = document.getElementById("btn");
+        username.onkeydown = function() {
+            console.log("用户名输入框被按下了");
+        }
+        // keyup事件是在按键被松开时触发的
+        username.onkeyup = function(event) {
+            console.log(event.target.value);
+        }
+        password.onkeydown = function() {
+            console.log("密码输入框被按下了");
+        }
+        // keyup事件是在按键被松开时触发的
+        password.onkeyup = function(event) {
+            console.log(event.keyCode);
+            // 13是回车键的键码
+            if (event.keyCode === 13) {
+                console.log("回车键被按下了");
+                console.log("开始搜索");
+            }
+        }
+        // 事件监听器
+    </script>
+</body>
+</html>

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>剩余时间</title>
 </head>
+
 <body>
+    <p id="nowtime"></p>
+    <p id="remainingDays"></p>
     <script>
 
         function formatDate(date) {
@@ -19,20 +23,32 @@
             if (day < 10) {
                 day = '0' + day;
             }
-            return year + '-' + month + '-' + day;
+            var nowtime = year + '-' + month + '-' + day;
+            // 获取<p>元素
+            var nowtimeElement = document.getElementById("nowtime");
+            // 将结果显示在<p>元素中
+            nowtimeElement.textContent = "当前时间：" + nowtime;
+            // return year + '-' + month + '-' + day;
         }
 
-        function leftDate()
-        {
+        function leftDate() {
             var today = new Date();
             var endYear = new Date(today.getFullYear(), 11, 31, 23, 59, 59, 999);
             var leftTime = endYear - today;
             var result = (endYear.getTime() - today.getTime()) / (24 * 60 * 60 * 1000);
-            console.log(Math.floor(result));
+            result = Math.floor(result);
+            // 获取<p>元素
+            var remainingDaysElement = document.getElementById("remainingDays");
+
+            // 将结果显示在<p>元素中
+            remainingDaysElement.textContent = "距离年底还有：" + result + " 天";
+
+            console.log(result);
         }
-        console.log(formatDate(new Date()));
+        formatDate(new Date());
         leftDate();
     </script>
 
 </body>
+
 </html>

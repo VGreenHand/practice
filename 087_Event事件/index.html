@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .root {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root" id="root">
+        <div class="child" id="child">子元素</div>
+    </div>
+
+    <button id="btn">按钮</button>
+    <a href="https://baidu.com" id="btn2">百度</a>
+
+    <script>
+        var btn = document.getElementById('btn');
+        var btn2 = document.getElementById('btn2');
+        btn.onclick = function (event) {
+            event.target.innerHTML = '按钮被点击了';
+            console.log(event.type);
+
+        }
+        btn2.onclick = function (event) {
+            event.preventDefault(); // 阻止默认行为
+            console.log(event.type);
+        }
+    </script>
+
+    <script>
+        var root = document.getElementById('root');
+        var child = document.getElementById('child');
+// addEventListener()方法的第三个参数是一个可选的布尔值，通常被称为useCapture。
+// 这个参数用于指定事件监听器是在事件的捕获阶段还是冒泡阶段执行。
+        root.addEventListener('click', function (event) {
+            console.log('root');
+        }, false);
+        child.addEventListener('click', function (event) {
+            event.stopPropagation(); // 阻止冒泡
+            console.log('child');
+        }, false);
+
+        root.onclick = function (event) {
+            console.log('root2');
+        }
+        child.onclick = function (event) {
+            event.stopPropagation(); // 阻止冒泡
+            console.log('child2');
+        }
+    </script>
+</body>
+
+</html>

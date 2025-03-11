@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 8px solid black;
+            margin: 20px;
+            background-color: red;
+        }
+
+        .root {
+            width: 500px;
+            height: 500px;
+            background-color: blue;
+            margin: 50px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="root" id="root">
+        <div class="box" id="box"></div>
+    </div>
+    <script>
+        var root = document.getElementById("root");
+        var box = document.getElementById("box");
+        // root.onmouseenter = function() {
+        //     console.log("root mouse enter");
+        // }
+        // box.onmouseenter = function() {
+        //     console.log("box mouse enter");
+        // }
+        // root.onmouseleave = function() {
+        //     console.log("root mouse leave");
+        // }
+        // box.onmouseleave = function() {
+        //     console.log("box mouse leave");
+        // }
+
+        root.onmouseover = function() {
+            console.log("root mouse over");
+        }
+        // box.onmouseover = function() {
+        //     console.log("box mouse over");
+        // }
+        root.onmouseout = function() {
+            console.log("root mouse out");
+        }
+        // box.onmouseout = function() {
+        //     console.log("box mouse out");
+        // }
+    </script>
+</body>
+</html>
