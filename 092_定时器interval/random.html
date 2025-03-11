@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <script>
+        var div = document.getElementById('div');
+        var opacity = 1;// 透明度
+        var direction = -1;// 1表示透明度增加，-1表示透明度减小
+        var interval = 50;// 间隔时间
+
+        function getRandomStep() {
+            return (Math.random() * 0.1) - 0.05; // 生成 -0.025 到 0.025 之间的随机步长
+        }
+        function getRandomDirection() {
+            return Math.random() > 0.5 ? 1 : -1; // 生成 1 或 -1
+        }
+        function getRandomInterval() {
+            return Math.random() * 200 + 50; // 生成 50 到 150 之间的随机间隔时间
+        }
+
+        var fader = setInterval(function () {
+            opacity += getRandomStep(); //随机步长
+            div.style.opacity = opacity;
+            if (opacity <= 0) {
+                opacity = 0;
+                direction = 1;
+                interval = getRandomInterval(); //随机间隔时间
+            } else if (opacity >= 1) {
+                opacity = 1;
+                direction = -1;
+                interval = getRandomInterval(); //随机间隔时间
+            } else {
+                if (Math.random() < 0.1) {
+                    direction = getRandomDirection(); //随机方向
+                    interval = getRandomInterval(); //随机间隔时间
+                }
+            }
+            opacity = Math.min(1, Math.max(0, opacity)); // 限制透明度在 0 到 1 之间
+            clearInterval(fader);
+            fader = setInterval(arguments.callee, interval); // 设置新的定时器
+        }, interval);
+    </script>
+</body>
+
+</html>

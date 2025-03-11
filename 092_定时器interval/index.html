@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #someDiv {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="someDiv"></div>
+
+    <script>
+        var someDiv = document.getElementById('someDiv');
+        var opacity = 1;
+        var direction = -1;
+        // 1表示透明度增加，-1表示透明度减小
+        var fader = setInterval(function () {
+            opacity = opacity + 0.01 * direction;
+            // 每次透明度减少0.01
+            someDiv.style.opacity = opacity;
+            if (opacity <= 0 || opacity >= 1) {
+                direction = -direction;
+                // 透明度为0或1时，改变方向
+            }
+        }, 30);
+        // 100ms后执行一次
+        
+    </script>
+</body>
+
+</html>

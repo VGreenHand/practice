@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" id="username" placeholder="请输入用户名">
+        <input type="text" id="password" placeholder="请输入密码">
+        <button id="submit">提交</button>
+        <button id="reset">重置</button>
+    </form>
+
+    <script>
+
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
+        var reset = document.getElementById('reset');
+        var submit = document.getElementById('submit');
+        var form = document.getElementById('form');
+
+        reset.onclick = function (event) {
+            form.reset();//触发在表单上的reset事件
+        }
+        submit.onclick = function (event) {
+            form.submit();//触发在表单上的submit事件
+        }
+
+        // 实时获取表单数据
+        username.oninput = function (event) {
+            console.log(event.target.value);
+            console.log('用户名输入框被按下了');
+        }
+        // 回车或失去焦点时获取表单数据
+        password.onchange = function (event) {
+            console.log(event.target.value);
+            console.log('密码输入框的值发生了改变');
+        }
+        username.onselect = function (event) {
+            console.log('用户名输入框被选中了');
+        }
+    </script>
+</body>
+
+</html>
