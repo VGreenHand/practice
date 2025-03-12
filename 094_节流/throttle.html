@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3 {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h3>111</h3>
+    <h3>222</h3>
+    <h3>333</h3>
+    <h3>444</h3>
+    <h3>555</h3>
+    <h3>666</h3>
+
+    <script>
+        function throttle(fn, delay) {
+            var timer = null;
+            return function () {
+                if (timer) {
+                    return;
+                }
+                timer = setTimeout(function () {
+                    fn();
+                    timer = null;
+                }, delay);
+            }
+        }
+
+        window.onscroll = throttle(scrollHandler, 1000);
+        // 1000ms内只执行一次scrollHandler
+        function scrollHandler() {
+            var scrollHandler = document.documentElement.scrollTop;
+            console.log(scrollHandler);
+        }
+    </script>
+</body>
+</html>

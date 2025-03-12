@@ -24,7 +24,7 @@
         var direction = -1;
         // 1表示透明度增加，-1表示透明度减小
         var fader = setInterval(function () {
-            opacity = opacity + 0.01 * direction;
+            opacity = opacity + 0.05 * direction;
             // 每次透明度减少0.01
             someDiv.style.opacity = opacity;
             if (opacity <= 0 || opacity >= 1) {
@@ -32,8 +32,8 @@
                 // 透明度为0或1时，改变方向
             }
         }, 30);
-        // 100ms后执行一次
-        
+        // 30ms后执行一次
+
     </script>
 </body>
 
