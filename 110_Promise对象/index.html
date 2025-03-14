@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+        function loadImageAsync(url) {
+            const promise = new Promise(function(resolve, reject) {
+                //创建一个Image对象
+                const image = new Image();
+                //设置图片的src
+                image.src = url;
+                //当图片加载成功时，调用resolve方法
+                image.onload = function() {
+                    resolve(image);
+                };
+                image.onerror = function() {
+                    reject(new Error('Could not load image at ' + url));
+                };
+                image.src = url;
+            });
+            return promise;
+        }
+        const promise = loadImageAsync('https://www.baidu.com/img/bd_logo1.png');
+        promise.then(function(image) {
+            box.appendChild(image);
+        }).catch(function(error) {
+            box.innerHTML = '加载失败';
+            console.log(error);
+        });
+    </script>
+</body>
+</html>
